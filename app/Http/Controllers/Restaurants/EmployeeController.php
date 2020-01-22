@@ -16,12 +16,15 @@ class EmployeeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('verify.admin.rest');
+        $this->middleware('verify.login');
     }
    
     public function index()
     {
-        $employees = Employee::all();
+        $restaurant = session()->get('user');
+        $restaurant=$restaurant['restaurant_id'];
+
+        $employees = Employee::where('restaurant_id', $restaurant)->having('role','>','1')->get();
 
         return view('employees.index', compact('employees'));
     }
@@ -36,8 +39,14 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $data['role'] = implode(',', $data['role']);
+
+        $data['password']=bcrypt($data['password']);
+
+        $user=session()->get('user');
         
-        $restaurant = Restaurant::where('code', $data['restaurant_code'])->first();
+        $restaurant = Restaurant::where('id', $user['restaurant_id'])->first();
 
         $restaurant= $restaurant->employees()->create($data);
 
@@ -79,13 +88,5 @@ class EmployeeController extends Controller
         $employee->delete();
 
         return redirect('/employee/index'); 
-    }
-
-    public function teste2()
-    {
-        $request=Request();
-        $user = $request->session()->get('user');
-
-        return $user;
     }
 }

@@ -174,8 +174,8 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => true,
+            'text' => 'Logout',
+            'url'  => 'logout',
             'topnav' => true,
         ],
         [
@@ -202,40 +202,56 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Admin',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Produtos',
+                    'url'  => '/product/index',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
+                    'text' => 'Funcionários',
+                    'url'  => '/employee/index',
+                ],
+                [
+                    'text' => 'Comandas',
+                    'url'  => '/order/index',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Pedidos',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Novo Pedido',
+                    'url'  => '/product/index',
+                ],
+                [
+                    'text' => 'Cozinha',
+                    'url'  => '/employee/index',
+                ],
+                [
+                    'text' => 'Comandas',
+                    'url'  => '/order/index',
+                ],
+            ],
+            [
+                'text'    => 'Admin Master',
+                'icon'    => 'fas fa-fw fa-share',
+                'submenu' => [
+                    [
+                        'text' => 'Restaurantes',
+                        'url'  => '/product/index',
                     ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    [
+                        'text' => 'Funcionários',
+                        'url'  => '/employee/index',
+                    ],
+                    [
+                        'text' => 'Comandas',
+                        'url'  => '/order/index',
+                    ],
                 ],
             ],
         ],

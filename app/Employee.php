@@ -9,7 +9,7 @@ use App\Restaurant;
 class Employee extends Model
 {
     protected $fillable = [
-        'code', 'name', 'role'
+        'code', 'name', 'role', 'password'
     ];
 
     public function restaurants()

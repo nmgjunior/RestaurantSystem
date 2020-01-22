@@ -14,7 +14,8 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('verify.admin.rest');
+        $this->middleware('verify.login');
+        $this->middleware('verify.level.two');
     }
 
     public function index()

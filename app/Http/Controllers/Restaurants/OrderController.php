@@ -21,7 +21,10 @@ class OrderController extends Controller
     
     public function index()
     {
-        $orders=Order::all();
+        $user=session()->get('user');
+
+        $orders = Order::where('restaurant_id', $user['restaurant_id'])->get();
+
         return view('orders.index', compact('orders'));
     }
 
@@ -36,7 +39,9 @@ class OrderController extends Controller
     {
         $data = $request->all();
 
-        $restaurant=Restaurant::where('code',$data['restaurant_code'])->first();
+        $user=session()->get('user');
+
+        $restaurant=Restaurant::find($user['restaurant_id']);
         $order=$restaurant->orders()->create($data);
         return redirect('order/index');
     }

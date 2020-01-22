@@ -18,7 +18,8 @@ class CreateEmployeesTable extends Migration
             $table->unsignedBigInteger('restaurant_id');
             $table->integer('code');
             $table->string('name');
-            $table->integer('role');
+            $table->string('role');
+            $table->string('password');
             $table->timestamps();
 
             $table->foreign('restaurant_id')->references('id')->on('restaurants');

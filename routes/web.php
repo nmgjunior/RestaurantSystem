@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.all');
+    return view('index');
 });
 
 Auth::routes();
@@ -53,7 +53,7 @@ Route::post('/employee/store', 'Restaurants\EmployeeController@store');
 Route::get('/employee/index', 'Restaurants\EmployeeController@index');
 Route::get('/employee/edit/{employee_id}', 'Restaurants\EmployeeController@edit');
 Route::post('/employee/update/{employee_id}', 'Restaurants\EmployeeController@update');
-Route::get('/employee/destroy/{employee_id}','Restaurants\EmployeeController@destroy');
+Route::get('/employee/delete/{employee_id}','Restaurants\EmployeeController@destroy');
 
 //Login
 

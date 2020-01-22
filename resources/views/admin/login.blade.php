@@ -34,11 +34,15 @@
                     <h2 class="title">Entrar</h2>
                     <form action="/login" method="POST">
                         <div class="row row-space">
-                            <div class="col-1">
+                            <div class="col-2">
                                 <div class="input-group">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <label class="label">Código</label>
                                     <input class="input--style-4" type="text" name="code">
+                                </div>
+                                <div class="input-group">
+                                    <label class="label">Senha</label>
+                                    <input class="input--style-4" type="password" name="password">
                                 </div>
                             </div>
                         <div class="p-t-15">
@@ -48,6 +52,7 @@
                 </div>
             </div>
         </div>
+        <a class="btn btn-success btn-lg" href="/restaurant/create" role="button">Novo Restaurante</a>
     </div>
 
     <!-- Jquery JS-->

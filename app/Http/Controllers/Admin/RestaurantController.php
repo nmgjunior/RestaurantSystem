@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 
 use App\Restaurant;
 
+use App\Employee;
+
 class RestaurantController extends Controller
 {
     public function index()
@@ -25,8 +27,20 @@ class RestaurantController extends Controller
     {
         $restaurant = new Restaurant();
         $restaurant->name = $request->input('name');
-        $restaurant->code = $request->input('code');
         $restaurant->save();
+        
+        $employee=$restaurant->employees();
+
+        $password=bcrypt($request->input('password'));
+
+        $dataemployee=[
+            "name"=>$request->input('employee_name'),
+            "code"=> $request->input('employee_code'),
+            "role"=>"2,3,4,5,6",
+            "password"=>$password
+        ];
+
+        $employee->create($dataemployee);
         return redirect('restaurant/index');
     }
 

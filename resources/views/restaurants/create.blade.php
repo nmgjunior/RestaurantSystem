@@ -37,19 +37,31 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    <label class="label">Nome</label>
+                                    <label class="label">Nome do Resturante</label>
                                     <input class="input--style-4" type="text" name="name">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Código</label>
-                                    <input class="input--style-4" type="text" name="code">
+                                    <label class="label">Nome do Administrador</label>
+                                    <input class="input--style-4" type="text" name="employee_name">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Código do Administrador</label>
+                                    <input class="input--style-4" type="text" name="employee_code">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Senha do Administrador</label>
+                                    <input class="input--style-4" type="password" name="password">
                                 </div>
                             </div>
                         </div>
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Cadastrar</button>
                         </div>
                     </form>
                 </div>

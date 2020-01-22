@@ -3,10 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
- 
-use App\Employee;
 
-class VerifyAdminRest
+class VerifyLogin
 {
     /**
      * Handle an incoming request.
@@ -19,16 +17,7 @@ class VerifyAdminRest
     {
         $request=Request();
         if ($request->session()->has('user')){
-
-            $user=$request->session()->get('user');
-                 if ($user['user_role']==1)
-                {
-                    return $next($request);
-                } else
-                {
-                    return redirect ('/');
-                }
-
+            return $next($request);
         } else{
             return redirect('/login');
         }
