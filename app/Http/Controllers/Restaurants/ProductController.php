@@ -36,13 +36,18 @@ class ProductController extends Controller
     {
         $data=$request->all();
 
-        $restaurant=Restaurant::where('code', $data['restaurant_code'])->first();
+        $request=Request();
+        $restaurant_id=$request->session()->get('user');
+        $restaurant_id=$restaurant_id['restaurant_id'];
+
+        $restaurant=Restaurant::find($restaurant_id);
         $restaurant= $restaurant->products()->create($data);
         return redirect('product/index');
     }
 
     public function edit($product_id)
     {
+        
         $product=Product::find($product_id);
 
         return view('products.edit', compact('product'));

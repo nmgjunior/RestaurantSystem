@@ -63,9 +63,13 @@ class EmployeeController extends Controller
     
     public function edit($id)
     {
+        $user=session()->get('user');
+        $user=$user['user_role'];
+        $levels=explode(',',$user);
+
         $employee=Employee::find($id);
 
-        return view ('employees.edit', compact('employee'));
+        return view ('employees.edit', compact('employee', 'levels'));
 
     }
 
@@ -73,6 +77,8 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+
+        $data['role']=implode(',',$data['role']);
 
         $employee = Employee::find($id);
 

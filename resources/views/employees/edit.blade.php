@@ -1,76 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('adminlte::page')
+@section('content')
 
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">Editar Funcionário</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form action="/employee/update/{{$employee->id}}" method="POST">
+            <div class="box-body">
+              <div class="form-group">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <label>Código do Funcionário</label>
+                <input type="text" class="form-control" name="code" value="{{$employee->code}}">
+              </div>
+              <div class="form-group">
+                <label>Nome do Funcionário</label>
+                <input type="text" class="form-control" name="name" value="{{$employee->name}}">
+              </div>
+              <div class="form-group">
 
-    <!-- Title Page-->
-    <title>Editar Produto</title>
-    <!-- Icons font CSS-->
-    <link href="{{ asset('create/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('create/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+                
 
-    <!-- Vendor CSS-->
-    <link href="{{ asset('create/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('create/vendor/datepicker/daterangepicker.css') }}" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="{{ asset('create/css/main.css') }}" rel="stylesheet" media="all">
-</head>
-
-<body>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-                    <h2 class="title">Editar Funcionário</h2>
-                    <form action="/employee/update/{{$employee->id}}" method="POST">
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    <label class="label">Nome</label>
-                                <input class="input--style-4" type="text" name="name" value="{{$employee->name}}">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Código</label>
-                                    <input class="input--style-4" type="text" name="code" value="{{$employee->code}}">
-                                </div>
-                                <div class="input-group">
-                                    <label class="label">Função</label>
-                                    <input class="input--style-4" type="text" name="role" value="{{$employee->role}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Editar</button>
-                        </div>
-                    </form>
-                </div>
+                <label>Áreas que o funcionário tem acesso</label>
+                <input type="checkbox" name="role[]" value="2" 
+                <?php if(in_array("2", $levels)){ echo " checked=\"checked\""; } ?>
+                >Produtos<br>
+                <input type="checkbox" name="role[]" value="3" 
+                <?php if(in_array("3", $levels)){ echo " checked=\"checked\""; } ?>  
+                >Funcionários<br>
+                <input type="checkbox" name="role[]" value="4"
+                <?php if(in_array("4", $levels)){ echo " checked=\"checked\""; } ?>
+                >Pedidos<br>
+                <input type="checkbox" name="role[]" value="5"
+                <?php if(in_array("5", $levels)){ echo " checked=\"checked\""; } ?>
+                >Cozinha<br>
+                <input type="checkbox" name="role[]" value="6"
+                <?php if(in_array("6", $levels)){ echo " checked=\"checked\""; } ?>
+                >Caixa<br>
             </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <button type="submit" class="btn btn-success">Editar</button>
+            </div>
+          </form>
+        </div>
         </div>
     </div>
 
-    <!-- Jquery JS-->
-    <script src="{{ asset('create/vendor/jquery/jquery.min.js') }}"></script>
-    <!-- Vendor JS-->
-    <script src="{{ asset('create/vendor/select2/select2.min.js') }}"></script>
-    <script src="{{ asset('create/vendor/datepicker/moment.min.js') }}"></script>
-    <script src="{{ asset('create/vendor/datepicker/daterangepicker.js') }}"></script>
-
-    <!-- Main JS-->
-    <script src="{{ asset('create/js/global.js') }}"></script>
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
-</html>
-<!-- end document-->
+    @stop
+  

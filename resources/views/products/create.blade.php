@@ -13,18 +13,17 @@
             <div class="box-body">
               <div class="form-group">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <label>Código do Produto</label>
+                <label>Código</label>
                 <input type="text" class="form-control" name="code">
               </div>
               <div class="form-group">
-                <label>Nome do Produto</label>
+                <label>Nome</label>
                 <input type="text" class="form-control" name="name">
               </div>
               <div class="form-group">
-                <label>Preço do Produto</label>
+                <label>Preço</label>
                 <input type="text" class="form-control" name="price">
               </div>
-            </div>
             <!-- /.box-body -->
             <div class="box-footer">
               <button type="submit" class="btn btn-success">Cadastrar</button>
